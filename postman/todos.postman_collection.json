@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "eddb6ffb-d486-4dae-96f4-bdf5f7ae7b94",
+		"name": "todos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "4dfc1cbd-a8d4-4011-90a4-2e3838dcc14c",
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5000/api/todos",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "eb4e16be-7cd9-427a-8029-be4e1c9016a1",
+			"name": "Get by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5000/api/todos/abs",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						"abs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "41e74cdb-c5ca-4a50-b6b1-74a6330b73fb",
+			"name": "Create todo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Nuevo todo\",\n\t\"description\": \"Este es mi primer todo\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5000/api/todos",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "9930de68-2e3c-4e99-a521-f551f94a38ae",
+			"name": "Update todo",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Actualizando todo\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5000/api/todos/5b65245f98beb2237c9cfceb",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						"5b65245f98beb2237c9cfceb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "4ab1c7a8-e50c-45a8-aacd-90dc6488e64e",
+			"name": "Delete todo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5000/api/todos/5b65245f98beb2237c9cfceb",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						"5b65245f98beb2237c9cfceb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "3f262c77-0612-4362-b345-c153c8f76998",
+			"name": "Toggle Todo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5000/api/todos/5b6a274a6f959648484c27aa/approve/toggle",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						"5b6a274a6f959648484c27aa",
+						"approve",
+						"toggle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "f321bdfe-7476-4ab9-aa23-dccb49e25bce",
+			"name": "Query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5000/api/todos/query?term=todo",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"todos",
+						"query"
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "todo"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
