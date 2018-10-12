@@ -21,12 +21,6 @@ class LeftMenu extends Component {
                             </NavLink>
                         </li>
 
-                        <li className="nav-item">
-                            <NavLink exact={true}  className="nav-link" to={ '/productos'}>
-                                Productos
-                            </NavLink>
-                        </li>
-
                     </ul>
                 </div>
             </nav>
