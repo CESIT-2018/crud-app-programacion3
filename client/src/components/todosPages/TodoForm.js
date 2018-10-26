@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {reduxForm, Field} from 'redux-form';
+import { Link } from 'react-router-dom';
 
 const validate = (values) => {
     const errors = {name:{}};
@@ -24,27 +25,33 @@ class TodoForm extends Component {
     }
 
     renderField = ({ input, label, type, meta: { touched, error } }) => (
-        <div>
-            <label>{label}</label>
-            <input {...input} placeholder={label} type={type} style={{ marginBottom: '5px' }} />
-            <div className="red-text" style={{ marginBottom: '20px' }}>
-                {touched && error}
-            </div>
+        
+        <div className="form-group">
+            <label forname={input.name}>{label}</label>
+            <input {...input} type={type} className="form-control" id={input.name}  placeholder={input.label} />
+            {/* <small id={input.name + "Help"} className="form-text text-muted">To be filled.</small>
+                    <div className="red-text" style={{ marginBottom: '20px' }}>
+                        {touched && error}
+                    </div> */}
         </div>
+    
     )
 
     render() {
 
-        const { handleSubmit } = this.props;
+        const { handleSubmit, loading } = this.props;
+
+        if(loading){
+            return (<span>loading...</span>);
+        }
 
         return (
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <Field name="name" type="text" component={this.renderField} label="Name" />
-                    <Field name="description" type="text" component={this.renderField} label="Description" />
-                    <button type="submit" >{this.isUpdated ? "Update" : "Create"}</button>
-                </form>
-            </div>
+            <form onSubmit={handleSubmit}>
+                <Field name="name" type="text" component={this.renderField} label="Name" />
+                <Field name="description" type="text" component={this.renderField} label="Description" />
+                <Link className="btn btn-light mr-2" to="/todos">Cancelar</Link>
+                <button className="btn btn-primary mr-2" type="submit" >{this.isUpdated ? "Update" : "Create"}</button>
+            </form>
         )
     }
 }

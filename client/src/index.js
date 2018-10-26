@@ -6,13 +6,17 @@ import reducers from './reducers';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension'; 
 
 import registerServiceWorker from './registerServiceWorker';
 // Development only axios helpers!
 import axios from 'axios';
 window.axios = axios;
 
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+const middleware = composeWithDevTools(applyMiddleware(reduxThunk));
+
+const store = createStore(reducers, middleware);
+
 
 ReactDOM.render(
     <Provider store={store}><App /></Provider>,

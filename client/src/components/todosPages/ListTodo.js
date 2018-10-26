@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchTodos} from '../../actions';
+import { fetchTodos, deleteTodo } from '../../actions';
 import { Link } from 'react-router-dom';
 
 class ListTodo extends Component {
@@ -16,9 +16,9 @@ class ListTodo extends Component {
                 <td>{todo.isDone ? "hecho" : "no"}</td>
                 <td>{todo.name}</td>
                 <td>
-                <Link to={`/todos/${todo._id}/show`} className="">Ver</Link>&nbsp;
-                <Link to={`/todos/${todo._id}/edit`} className="">Editar</Link>&nbsp;
-                <Link to={`/todos/${todo._id}/delete`} className="">Eliminar</Link>
+                    <Link to={`/todos/${todo._id}/show`} className="mr-2">Ver</Link>
+                    <Link to={`/todos/${todo._id}/edit`} className="mr-2">Editar</Link>
+                    <a className="mr-2" href="#more" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.props.deleteTodo(todo._id)  }}>Eliminar</a>
                 </td>
             </tr>
             )
@@ -62,4 +62,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {fetchTodos})(ListTodo);
+export default connect(mapStateToProps, {fetchTodos, deleteTodo})(ListTodo);
