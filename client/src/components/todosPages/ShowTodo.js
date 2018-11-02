@@ -42,7 +42,9 @@ class ShowTodo extends Component {
 }
 
 function mapStateToProps(state) {
-    return {todo: state.todos.todo}
+    return {
+        todo: state.todoDS.todo
+    }
 }
 
 export default connect(mapStateToProps, { fetchTodoById })(ShowTodo);

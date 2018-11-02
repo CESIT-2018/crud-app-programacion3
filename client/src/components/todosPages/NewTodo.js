@@ -42,7 +42,10 @@ class NewTodo extends Component {
 }
 
 function mapStateToProps(state) {
-    return {todo: state.todos.todo, errors: state.todos.errors}
+    return {
+        todo: state.todoDS.todo, 
+        errors: state.todoDS.errors
+    }
 }
 
 export default connect(mapStateToProps, {newTodo,saveTodo})(NewTodo);

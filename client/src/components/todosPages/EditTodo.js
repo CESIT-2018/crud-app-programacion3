@@ -48,9 +48,9 @@ class EditTodo extends Component {
 
 function mapStateToProps(state) {
     return {
-        todo: state.todos.todo,  
-        loading: state.todos.loading,
-        errors: state.todos.errors
+        todo: state.todoDS.todo,  
+        loading: state.todoDS.loading,
+        errors: state.todoDS.errors
     };
 }
 

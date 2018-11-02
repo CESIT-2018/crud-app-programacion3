@@ -2,17 +2,28 @@ import React, {Component} from 'react';
 import {reduxForm, Field} from 'redux-form';
 import { Link } from 'react-router-dom';
 
+
 const validate = (values) => {
-    const errors = {name:{}};
-
-    if(!values.name) {
-        errors.name = {
-          message: 'You need to provide Name'
-        }
-      }
-
-    return errors;
-}
+    const errors = {}
+    if (!values.name) {
+      errors.name = 'Nombre es requerido'
+    } else if (values.name &&values.name.length < 5) {
+      errors.name = 'Debe contener al menos 5 caracteres'
+    }
+    // if (!values.email) {
+    //   errors.email = 'Required'
+    // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    //   errors.email = 'Invalid email address'
+    // }
+    // if (!values.age) {
+    //   errors.age = 'Required'
+    // } else if (isNaN(Number(values.age))) {
+    //   errors.age = 'Must be a number'
+    // } else if (Number(values.age) < 18) {
+    //   errors.age = 'Sorry, you must be at least 18 years old'
+    // }
+    return errors
+  }
 
 class TodoForm extends Component {
 
@@ -29,10 +40,9 @@ class TodoForm extends Component {
         <div className="form-group">
             <label forname={input.name}>{label}</label>
             <input {...input} type={type} className="form-control" id={input.name}  placeholder={input.label} />
-            {/* <small id={input.name + "Help"} className="form-text text-muted">To be filled.</small>
-                    <div className="red-text" style={{ marginBottom: '20px' }}>
-                        {touched && error}
-                    </div> */}
+            <div className="text-danger" style={{ marginBottom: '20px' }}>
+                {touched && error}
+            </div>
         </div>
     
     )
@@ -56,4 +66,4 @@ class TodoForm extends Component {
     }
 }
 
-export default reduxForm({form: 'todo'}, validate)(TodoForm);
+export default reduxForm({form: 'todo', validate})(TodoForm);

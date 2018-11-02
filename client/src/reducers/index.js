@@ -4,5 +4,5 @@ import reducerTodos from './ReducerTodos';
 
 export default combineReducers({
   form: reduxForm,
-  todos: reducerTodos
+  todoDS: reducerTodos
 });

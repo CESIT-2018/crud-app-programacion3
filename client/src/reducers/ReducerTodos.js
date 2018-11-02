@@ -5,7 +5,7 @@ import {
 const TODO_INITIAL_STATE = {};
 
 const INITIAL_STATE = {
-  list: [],
+  listTodos: [],
   todo: TODO_INITIAL_STATE,
   loading: false,
   errors: {}
@@ -16,7 +16,7 @@ export default function (state = INITIAL_STATE, action) {
     case todosTypes.FETCH_TODOS_FULFILLED:
       return {
         ...state,
-        list: action.payload.data,
+        listTodos: action.payload.data,
         loading: false
       };
     
@@ -41,7 +41,7 @@ export default function (state = INITIAL_STATE, action) {
     case todosTypes.SAVE_TODO : {
       return {
         ...state,
-        list: [...state.list, action.payload.data],
+        listTodos: [...state.listTodos, action.payload.data],
         errors: {}
       }
     }
@@ -74,7 +74,7 @@ export default function (state = INITIAL_STATE, action) {
       return {
         ...state,
         todo: TODO_INITIAL_STATE,
-        list: state.list.map(item => item._id === todo._id ? todo : item)
+        listTodos: state.listTodos.map(item => item._id === todo._id ? todo : item)
       }
     }
 
@@ -82,7 +82,7 @@ export default function (state = INITIAL_STATE, action) {
       const id = action.payload.data._id;
       return {
         ...state,
-        list: state.list.filter(item => item._id !== id)
+        listTodos: state.listTodos.filter(item => item._id !== id)
       }
     }
 

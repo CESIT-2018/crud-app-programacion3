@@ -58,7 +58,7 @@ class ListTodo extends Component {
 
 function mapStateToProps(state) {
     return {
-        listTodos: state.todos.list
+        listTodos: state.todoDS.listTodos
     };
 }
 
